@@ -14,7 +14,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/11/27/javascript事件之-冒泡事件与捕获事件/index.html">
 <meta property="og:site_name" content="小岁">
 <meta property="og:description" content="什么是冒泡事件 : 当一个元素接收到事件的时候，会把他接收到的所有传播给他的父级，一直到顶层window.事件冒泡机制IE 5.5: div -&amp;gt; body -&amp;gt; documentIE 6.0: div -&amp;gt; body -&amp;gt; html -&amp;gt; documentMozilla 1.0: div -&amp;gt; body -&amp;gt; html -&amp;gt; document -&amp;">
-<meta property="og:updated_time" content="2016-11-27T12:31:33.070Z">
+<meta property="og:updated_time" content="2016-11-28T16:02:43.105Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript事件之 冒泡事件与捕获事件">
 <meta name="twitter:description" content="什么是冒泡事件 : 当一个元素接收到事件的时候，会把他接收到的所有传播给他的父级，一直到顶层window.事件冒泡机制IE 5.5: div -&amp;gt; body -&amp;gt; documentIE 6.0: div -&amp;gt; body -&amp;gt; html -&amp;gt; documentMozilla 1.0: div -&amp;gt; body -&amp;gt; html -&amp;gt; document -&amp;">
@@ -37,7 +37,7 @@
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
 			
-			<img src="https://raw.githubusercontent.com/wxiaosui/MyBlog/7a37f82e7857a0915bb698005a15f29a10082fa9/images/mado.jpg" class="js-avatar">
+			<img src="https://raw.githubusercontent.com/wxiaosui/MyBlog/master/images/mode.jpg" class="js-avatar">
 			
 		</a>
 
@@ -52,7 +52,9 @@
 		<nav class="header-menu">
 			<ul>
 			
-				<li><a href="/">主页</a></li>
+				<li><a href="https://wxiaosui.github.io">主页</a></li>
+	        
+				<li><a href="/archives">所有文章</a></li>
 	        
 				<li><a href="/tags/随笔">随笔</a></li>
 	        
@@ -85,13 +87,13 @@
 		<nav class="header-nav">
 			<div class="social">
 				
-					<a class="github" target="_blank" href="#" title="github">github</a>
+					<a class="github" target="_blank" href="https://github.com/wxiaosui" title="github">github</a>
 		        
-					<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					<a class="weibo" target="_blank" href="http://weibo.com/p/1005053140583373/home?from=page_100505&mod=TAB#place" title="weibo">weibo</a>
 		        
 					<a class="rss" target="_blank" href="#" title="rss">rss</a>
 		        
-					<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+					<a class="mail" target="_blank" href="/wangxsui@gmail.com" title="mail">mail</a>
 		        
 			</div>
 		</nav>
@@ -109,7 +111,7 @@
 		<header id="header" class="inner">
 			<div class="profilepic">
 				
-					<img src="https://raw.githubusercontent.com/wxiaosui/MyBlog/7a37f82e7857a0915bb698005a15f29a10082fa9/images/mado.jpg" class="js-avatar">
+					<img src="https://raw.githubusercontent.com/wxiaosui/MyBlog/master/images/mode.jpg" class="js-avatar">
 				
 			</div>
 			<hgroup>
@@ -121,7 +123,9 @@
 			<nav class="header-menu">
 				<ul>
 				
-					<li><a href="/">主页</a></li>
+					<li><a href="https://wxiaosui.github.io">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
 		        
 					<li><a href="/tags/随笔">随笔</a></li>
 		        
@@ -130,13 +134,13 @@
 			<nav class="header-nav">
 				<div class="social">
 					
-						<a class="github" target="_blank" href="#" title="github">github</a>
+						<a class="github" target="_blank" href="https://github.com/wxiaosui" title="github">github</a>
 			        
-						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+						<a class="weibo" target="_blank" href="http://weibo.com/p/1005053140583373/home?from=page_100505&mod=TAB#place" title="weibo">weibo</a>
 			        
 						<a class="rss" target="_blank" href="#" title="rss">rss</a>
 			        
-						<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+						<a class="mail" target="_blank" href="/wangxsui@gmail.com" title="mail">mail</a>
 			        
 				</div>
 			</nav>
@@ -163,8 +167,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="什么是冒泡事件-当一个元素接收到事件的时候，会把他接收到的所有传播给他的父级，一直到顶层window-事件冒泡机制"><a href="#什么是冒泡事件-当一个元素接收到事件的时候，会把他接收到的所有传播给他的父级，一直到顶层window-事件冒泡机制" class="headerlink" title="什么是冒泡事件 : 当一个元素接收到事件的时候，会把他接收到的所有传播给他的父级，一直到顶层window.事件冒泡机制"></a>什么是冒泡事件 : 当一个元素接收到事件的时候，会把他接收到的所有传播给他的父级，一直到顶层window.事件冒泡机制</h3><p>IE 5.5: div -&gt; body -&gt; document<br>IE 6.0: div -&gt; body -&gt; html -&gt; document<br>Mozilla 1.0: div -&gt; body -&gt; html -&gt; document -&gt; window</p>
-<p>代码示例<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&lt;div id=<span class="string">"div1"</span>&gt;</div><div class="line">	&lt;div id=<span class="string">"div2"</span>&gt;</div><div class="line">		&lt;div id=<span class="string">"div3"</span>&gt;点击我（我是事件div3），会同时触发div2及div1的点击事件！&lt;/div&gt;</div><div class="line">	&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;script&gt;</div><div class="line">	var div1 = document.getElementById(<span class="string">'div1'</span>);</div><div class="line">	var div2 = document.getElementById(<span class="string">'div2'</span>);</div><div class="line">	var div3 = document.getElementById(<span class="string">'div3'</span>);</div><div class="line"></div><div class="line">	<span class="keyword">function</span> <span class="function"><span class="title">fn</span></span>()&#123;</div><div class="line">		alert(this.id);</div><div class="line">	&#125;;</div><div class="line"></div><div class="line">	div1.addEventListener(<span class="string">'click'</span>,fn);</div><div class="line">    div2.addEventListener(<span class="string">'click'</span>,fn);</div><div class="line">    div3.addEventListener(<span class="string">'click'</span>,fn);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+        <h3 id="什么是冒泡事件-当一个元素接收到事件的时候，会把他接收到的所有传播给他的父级，一直到顶层window-事件冒泡机制"><a href="#什么是冒泡事件-当一个元素接收到事件的时候，会把他接收到的所有传播给他的父级，一直到顶层window-事件冒泡机制" class="headerlink" title="什么是冒泡事件 : 当一个元素接收到事件的时候，会把他接收到的所有传播给他的父级，一直到顶层window.事件冒泡机制"></a>什么是冒泡事件 : 当一个元素接收到事件的时候，会把他接收到的所有传播给他的父级，一直到顶层window.事件冒泡机制</h3><p>IE 5.5: div -&gt; body -&gt; document<br>IE 6.0: div -&gt; body -&gt; html -&gt; document<br>Mozilla 1.0: div -&gt; body -&gt; html -&gt; document -&gt; window<br><a id="more"></a><br>代码示例<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&lt;div id=<span class="string">"div1"</span>&gt;</div><div class="line">	&lt;div id=<span class="string">"div2"</span>&gt;</div><div class="line">		&lt;div id=<span class="string">"div3"</span>&gt;点击我（我是事件div3），会同时触发div2及div1的点击事件！&lt;/div&gt;</div><div class="line">	&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;script&gt;</div><div class="line">	var div1 = document.getElementById(<span class="string">'div1'</span>);</div><div class="line">	var div2 = document.getElementById(<span class="string">'div2'</span>);</div><div class="line">	var div3 = document.getElementById(<span class="string">'div3'</span>);</div><div class="line"></div><div class="line">	<span class="keyword">function</span> <span class="function"><span class="title">fn</span></span>()&#123;</div><div class="line">		alert(this.id);</div><div class="line">	&#125;;</div><div class="line"></div><div class="line">	div1.addEventListener(<span class="string">'click'</span>,fn);</div><div class="line">    div2.addEventListener(<span class="string">'click'</span>,fn);</div><div class="line">    div3.addEventListener(<span class="string">'click'</span>,fn);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
 <p>冒泡效果：<br>如果点击div3，会先弹框div3，然后弹div2，最后弹地div1；<br>如果点击div2，先弹出div2，然后是div1；</p>
 <h3 id="什么是捕获事件-：-事件从最不精确的对象-document-对象-开始触发，然后到最精确-也可以在窗口级别捕获事件，不过必须由开发人员特别指定-。"><a href="#什么是捕获事件-：-事件从最不精确的对象-document-对象-开始触发，然后到最精确-也可以在窗口级别捕获事件，不过必须由开发人员特别指定-。" class="headerlink" title="什么是捕获事件 ： 事件从最不精确的对象(document 对象)开始触发，然后到最精确(也可以在窗口级别捕获事件，不过必须由开发人员特别指定)。"></a>什么是捕获事件 ： 事件从最不精确的对象(document 对象)开始触发，然后到最精确(也可以在窗口级别捕获事件，不过必须由开发人员特别指定)。</h3><p>代码示例<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&lt;div id=<span class="string">"div1"</span>&gt;</div><div class="line">	&lt;div id=<span class="string">"div2"</span>&gt;</div><div class="line">		&lt;div id=<span class="string">"div3"</span>&gt;点击我（我是事件div3），会同时触发div2及div1的点击事件！但首先出现的的是document&lt;/div&gt;</div><div class="line">	&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;script&gt;</div><div class="line">	var div1 = document.getElementById(<span class="string">'div1'</span>);</div><div class="line">	var div2 = document.getElementById(<span class="string">'div2'</span>);</div><div class="line">	var div3 = document.getElementById(<span class="string">'div3'</span>);</div><div class="line"></div><div class="line">	<span class="keyword">function</span> <span class="function"><span class="title">fn</span></span>()&#123;</div><div class="line">		alert(this.id);</div><div class="line">	&#125;;</div><div class="line"></div><div class="line">	document.addEventListener(<span class="string">'click'</span>,<span class="function"><span class="title">function</span></span>()&#123;alert(<span class="string">'document'</span>)&#125;,<span class="literal">true</span>);</div><div class="line"></div><div class="line">    div1.addEventListener(<span class="string">'click'</span>,fn,<span class="literal">true</span>);</div><div class="line">    div2.addEventListener(<span class="string">'click'</span>,fn,<span class="literal">true</span>);</div><div class="line">    div3.addEventListener(<span class="string">'click'</span>,fn,<span class="literal">true</span>);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
 <p>捕获效果：<br>如果点击窗口div3,先弹出document，然后 div1 &gt;&gt; div2 &gt;&gt; div3<br>点击div1，先弹出document，然后div1</p>
