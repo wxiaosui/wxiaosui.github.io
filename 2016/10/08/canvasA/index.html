@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://yoursite.com">
+  <title>canvas（一） 面向对象方式绘制 | 小岁</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="用面向方式对象绘制canvascanvas绘制由js动态完成，所以构建了四个js文件：main.js是主函数，当作入口吧；Rectangle/Circle/Shape.js当做是类，完成各自的功能因为用到闭包函数，所以前面加上声明window.xiaosui = window.xiaosui ||{}; xiaosui是自己定义的命名空间这样做的方式有点点复杂，但是在开发过程中运用方便，做到很好的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="canvas（一） 面向对象方式绘制">
+<meta property="og:url" content="http://yoursite.com/2016/10/08/canvasA/index.html">
+<meta property="og:site_name" content="小岁">
+<meta property="og:description" content="用面向方式对象绘制canvascanvas绘制由js动态完成，所以构建了四个js文件：main.js是主函数，当作入口吧；Rectangle/Circle/Shape.js当做是类，完成各自的功能因为用到闭包函数，所以前面加上声明window.xiaosui = window.xiaosui ||{}; xiaosui是自己定义的命名空间这样做的方式有点点复杂，但是在开发过程中运用方便，做到很好的">
+<meta property="og:updated_time" content="2016-11-29T14:46:02.158Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="canvas（一） 面向对象方式绘制">
+<meta name="twitter:description" content="用面向方式对象绘制canvascanvas绘制由js动态完成，所以构建了四个js文件：main.js是主函数，当作入口吧；Rectangle/Circle/Shape.js当做是类，完成各自的功能因为用到闭包函数，所以前面加上声明window.xiaosui = window.xiaosui ||{}; xiaosui是自己定义的命名空间这样做的方式有点点复杂，但是在开发过程中运用方便，做到很好的">
+  
+    <link rel="alternative" href="/atom.xml" title="小岁" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/main.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="https://raw.githubusercontent.com/wxiaosui/MyBlog/master/images/mode.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">John Doe</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">LOL Dota2</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="https://wxiaosui.github.io">主页</a></li>
+	        
+				<li><a href="/archives">所有文章</a></li>
+	        
+				<li><a href="/tags/随笔">随笔</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">友链</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="3" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/wxiaosui" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/p/1005053140583373/home?from=page_100505&mod=TAB#place" title="weibo">weibo</a>
+		        
+					<a class="rss" target="_blank" href="#" title="rss">rss</a>
+		        
+					<a class="mail" target="_blank" href="/wangxsui@gmail.com" title="mail">mail</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">John Doe</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="https://raw.githubusercontent.com/wxiaosui/MyBlog/master/images/mode.jpg" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">John Doe</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">LOL Dota2</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="https://wxiaosui.github.io">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/tags/随笔">随笔</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/wxiaosui" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/p/1005053140583373/home?from=page_100505&mod=TAB#place" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="#" title="rss">rss</a>
+			        
+						<a class="mail" target="_blank" href="/wangxsui@gmail.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="w-canvasA" class="article article-type-w" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      canvas（一） 面向对象方式绘制
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="用面向方式对象绘制canvas"><a href="#用面向方式对象绘制canvas" class="headerlink" title="用面向方式对象绘制canvas"></a>用面向方式对象绘制canvas</h3><p>canvas绘制由js动态完成，所以构建了四个js文件：main.js是主函数，当作入口吧；Rectangle/Circle/Shape.js当做是类，完成各自的功能<br>因为用到闭包函数，所以前面加上声明<code>window.xiaosui = window.xiaosui ||{};</code> <code>xiaosui</code>是自己定义的命名空间<br>这样做的方式有点点复杂，但是在开发过程中运用方便，做到很好的动画效果和改变，比如做游戏之类的。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"Shape.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"Circle.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"Rectangle.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"main.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="main-js文件"><a href="#main-js文件" class="headerlink" title="main.js文件"></a>main.js文件</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> CANVAS_WIDTH = <span class="number">400</span>, CANVAS_HEIGHT = <span class="number">300</span>;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">createCanvas</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        canvas = <span class="built_in">document</span>.createElement(<span class="string">"canvas"</span>);</div><div class="line">        canvas.width = CANVAS_WIDTH;</div><div class="line">        canvas.height = CANVAS_HEIGHT;</div><div class="line">        <span class="built_in">document</span>.body.appendChild(canvas);</div><div class="line">        context = canvas.getContext(<span class="string">"2d"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">clearCanvas</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        context.clearRect(<span class="number">0</span>, <span class="number">0</span>, CANVAS_WIDTH, CANVAS_HEIGHT);   <span class="comment">//清除画板</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">drawRect</span>(<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">var</span> rect = <span class="keyword">new</span> xiaosui.Rectangle(<span class="number">100</span>, <span class="number">100</span>);</div><div class="line">        rect.x = <span class="number">100</span>;</div><div class="line">        rect.y = <span class="number">100</span>;</div><div class="line">        rect.color = <span class="string">"#efefef"</span>;</div><div class="line">        rect.render(context);</div><div class="line"></div><div class="line">        <span class="keyword">var</span> circle = <span class="keyword">new</span> xiaosui.Circle(<span class="number">50</span>);</div><div class="line">        circle.color = <span class="string">"#ff4400"</span>;</div><div class="line">        circle.x = <span class="number">50</span>;</div><div class="line">        circle.y = <span class="number">50</span>;</div><div class="line">        circle.render(context);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        createCanvas();</div><div class="line">        drawRect();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    init();</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+<h3 id="Rectangle-js文件"><a href="#Rectangle-js文件" class="headerlink" title="Rectangle.js文件"></a>Rectangle.js文件</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.xiaosui = <span class="built_in">window</span>.xiaosui ||&#123;&#125;;</div><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">Rectangle</span>(<span class="params">width, height</span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>._width = width;</div><div class="line">        <span class="keyword">this</span>._height = height;</div><div class="line"></div><div class="line">        xiaosui.Shape.call(<span class="keyword">this</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    Rectangle.prototype = <span class="keyword">new</span> xiaosui.Shape();</div><div class="line"></div><div class="line">    <span class="keyword">var</span> p = Rectangle.prototype;</div><div class="line">    p.onDraw = <span class="function"><span class="keyword">function</span> (<span class="params">context</span>) </span>&#123;</div><div class="line">        context.fillRect(<span class="number">0</span>, <span class="number">0</span>, <span class="keyword">this</span>.width, <span class="keyword">this</span>.height);</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    <span class="built_in">Object</span>.defineProperties(p, &#123;</div><div class="line">        <span class="attr">width</span>: &#123;</div><div class="line">            <span class="attr">set</span>: <span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</div><div class="line">                <span class="keyword">this</span>._width = value;</div><div class="line">            &#125;,</div><div class="line">            <span class="attr">get</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">this</span>._width;</div><div class="line">            &#125;</div><div class="line">        &#125;,</div><div class="line">        <span class="attr">height</span>: &#123;</div><div class="line">            <span class="attr">set</span>: <span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</div><div class="line">                <span class="keyword">this</span>._height = value;</div><div class="line">            &#125;,</div><div class="line">            <span class="attr">get</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">this</span>._height;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    xiaosui.Rectangle = Rectangle;</div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
+<h3 id="Circle-js文件"><a href="#Circle-js文件" class="headerlink" title="Circle.js文件"></a>Circle.js文件</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.xiaosui = <span class="built_in">window</span>.xiaosui ||&#123;&#125;;</div><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">Circle</span>(<span class="params">r</span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>._r = r;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">var</span> p = Circle.prototype = <span class="keyword">new</span> xiaosui.Shape();</div><div class="line"></div><div class="line">    p.onDraw = <span class="function"><span class="keyword">function</span> (<span class="params">context</span>) </span>&#123;</div><div class="line">        context.beginPath();</div><div class="line">        context.arc(<span class="number">0</span>, <span class="number">0</span>, <span class="keyword">this</span>._r, <span class="number">0</span>, <span class="built_in">Math</span>.PI * <span class="number">2</span>);</div><div class="line">        context.fill();</div><div class="line">        context.closePath();</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    xiaosui.Circle = Circle;</div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
+<h3 id="Shape-js文件"><a href="#Shape-js文件" class="headerlink" title="Shape.js文件"></a>Shape.js文件</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.xiaosui = <span class="built_in">window</span>.xiaosui ||&#123;&#125;;</div><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">Shape</span>(<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">var</span> p = Shape.prototype;</div><div class="line"></div><div class="line">    <span class="built_in">Object</span>.defineProperties(p, &#123;</div><div class="line">        <span class="attr">x</span>: &#123;</div><div class="line">            <span class="attr">set</span>: <span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</div><div class="line">                <span class="keyword">this</span>._x = value;</div><div class="line">            &#125;,</div><div class="line">            <span class="attr">get</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">this</span>._x;</div><div class="line">            &#125;</div><div class="line">        &#125;,</div><div class="line">        <span class="attr">y</span>: &#123;</div><div class="line">            <span class="attr">set</span>: <span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</div><div class="line">                <span class="keyword">this</span>._y = value;</div><div class="line">            &#125;,</div><div class="line">            <span class="attr">get</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">this</span>._y;</div><div class="line">            &#125;</div><div class="line">        &#125;,</div><div class="line">        <span class="attr">color</span>: &#123;</div><div class="line">            <span class="attr">set</span>: <span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</div><div class="line">                <span class="keyword">this</span>._color = value;</div><div class="line">            &#125;,</div><div class="line">            <span class="attr">get</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">this</span>._color;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    p.render = <span class="function"><span class="keyword">function</span> (<span class="params">context</span>) </span>&#123;</div><div class="line">        context.save();</div><div class="line">        context.translate(<span class="keyword">this</span>.x, <span class="keyword">this</span>.y);</div><div class="line">        context.fillStyle = <span class="keyword">this</span>.color;</div><div class="line"></div><div class="line">        <span class="keyword">this</span>.onDraw(context);</div><div class="line"></div><div class="line">        context.restore();</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    p.onDraw = <span class="function"><span class="keyword">function</span> (<span class="params">context</span>) </span>&#123;</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    xiaosui.Shape = Shape;</div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/10/08/canvasA/" class="archive-article-date">
+  	<time datetime="2016-10-08T13:22:37.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-08</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/canvas/">canvas</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2016/11/27/javascript事件之-冒泡事件与捕获事件/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          javascript事件之 冒泡事件与捕获事件
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 John Doe
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+      <li data-hook="tools-section-friends"><span class="text">友链</span><i class="icon-link"></i></li>
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/javascript事件/" style="font-size: 10px;">javascript事件</a>
+    			</div>
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-friends">
+  		
+  			<div class="friends-wrap" id="js-friends">
+  			
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://webres.wang/">Web资源网</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.qdfuns.com/">前端网</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.runoob.com/">菜鸟教程</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.json.org.cn/tools/JSONEditorOnline/index.htm">JSON在线编辑器</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://runjs.cn/">在线代码展示</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.gitbook.com/book/li-xinyang/frontend-notebook/details">前端开发笔记</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">友情链接6</a>
+  	        
+  	        </div>
+  		
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">没什么关于我的，啦啦啦啦啦~</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
